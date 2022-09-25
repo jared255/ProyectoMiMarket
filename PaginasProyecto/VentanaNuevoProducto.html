@@ -17,10 +17,6 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
-  <!-- Navbar -->
-  <!-- /.navbar -->
-  <!-- Main Sidebar Container -->
-  <!-- Content Wrapper. Contains page content -->
   <div class="content">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -43,11 +39,12 @@
             <div class="row">
               <div class="col-sm-11">
                 <ol class="breadcrumb float-sm-right" >
-                  <li class="breadcrumb-item"><a href="#">INICIO</a></li>
-                  <li class="breadcrumb-item"><a href="#">VENTAS</a></li>
-                  <li class="breadcrumb-item "><a href="#">INVENTARIO</a></li>
-                  <li class="breadcrumb-item "><a href="#">REPORTES</a></li>
-                  <li class="breadcrumb-item "><a href="#">REGISTRO</li>
+                  <li class="breadcrumb-item"><a href="Principal.html">INICIO</a></li>
+                  <li class="breadcrumb-item"><a href="VentanaVentas.html">VENTAS</a></li>
+                  <li class="breadcrumb-item "><a href="VentanaInventario.html">INVENTARIO</a></li>
+                  <li class="breadcrumb-item "><a href="VentanaReportes.html">REPORTES</a></li>
+                  <li class="breadcrumb-item "><a href="Registro.html">REGISTRO</a></li>
+                  <li class="breadcrumb-item "><a href="index.html">SALIR</li>
                 </ol>
               </div>
               <div class="col-sm-min">
@@ -62,101 +59,107 @@
     <!-- Main content -->
   </div>
 
-  <section class="content">
-    <form action="VentanaInventario.html" method="get">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-7">
-          <fieldset class="form-group border p-3">
-            <legend class="w-auto px-2">Registro de nuevo Producto</legend>
-            <div class="card card-warning">
-              <div class="card-header">
-                <h3 class="card-title">General Elements</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <form>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Codigo</label>
-                        <input type="text" class="form-control" placeholder="Codigo ...">
-                      </div>
+  <div class="content">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <form action="VentanaInventario.html" method="get">
+            <div class="card-body">
+            <div class="row">
+              <div class="col-md-7">
+                <fieldset class="form-group border p-3">
+                  <legend class="w-auto px-2">Registro de nuevo Producto</legend>
+                  <div class="card card-warning">
+                    <div class="card-header">
+                      <h3 class="card-title">General Elements</h3>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Existencias/Unidades</label>
-                        <input type="text" class="form-control" placeholder="Cantidad ..." >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Nombre del Producto</label>
-                        <input type="text" class="form-control" placeholder="Nombre ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Precio de compra</label>
-                        <input type="text" class="form-control" placeholder="Bs.- ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      
-                    </div>
-                  </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                      <form>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <!-- text input -->
+                            <div class="form-group">
+                              <label>Codigo</label>
+                              <input type="text" class="form-control" placeholder="Codigo ...">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label>Existencias/Unidades</label>
+                              <input type="text" class="form-control" placeholder="Cantidad ..." >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <!-- text input -->
+                            <div class="form-group">
+                              <label>Nombre del Producto</label>
+                              <input type="text" class="form-control" placeholder="Nombre ...">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <!-- text input -->
+                            <div class="form-group">
+                              <label>Precio de compra</label>
+                              <input type="text" class="form-control" placeholder="Bs.- ...">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            
+                          </div>
+                        </div>
 
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label>Categoría</label>
-                        <select class="form-control">
-                          <option>Seleccionar</option>
-                          <option>Lácteos</option>
-                          <option>Refrescos</option>
-                          <option>Aseo Personal</option>
-                          <option>Bebidas alcoholicas</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                    </div>
-                  </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <!-- select -->
+                            <div class="form-group">
+                              <label>Categoría</label>
+                              <select class="form-control">
+                                <option>Seleccionar</option>
+                                <option>Lácteos</option>
+                                <option>Refrescos</option>
+                                <option>Aseo Personal</option>
+                                <option>Bebidas alcoholicas</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                          </div>
+                        </div>
 
-                </form>
+                      </form>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                </fieldset>
               </div>
-              <!-- /.card-body -->
+
+              <div class="col-md-5">
+                <fieldset class="form-group border p-3">
+                  <legend class="w-auto px-2">Aumentar Existencias</legend>
+                  <h3 class="text-center">Nuevos elementos</h3>
+                  <input type="number" value="1" min="0" max="1000" step="1"/>
+                </fieldset>
+              </div>
             </div>
-          </fieldset>
+            <input name="guardar" id="guardar" class="btn btn-primary" type="submit" value="GUARDAR">
+            <input name="limpiar" id="limpiar" class="btn btn-primary" type="reset" value="LIMPIAR">
+            <input type="reset" class="btn btn-primary" href="Principal.html" value="CANCELAR">
+            
+            </div>
+          </div>
+          
         </div>
-
-        <div class="col-md-5">
-          <fieldset class="form-group border p-3">
-            <legend class="w-auto px-2">Aumentar Existencias</legend>
-            <h3 class="text-center">Nuevos elementos</h3>
-            <input type="number" value="1" min="0" max="1000" step="1"/>
-          </fieldset>
-        </div>
-      </div>
-      <input name="guardar" id="guardar" class="btn btn-primary" type="submit" value="GUARDAR">
-      <input name="limpiar" id="limpiar" class="btn btn-primary" type="reset" value="LIMPIAR">
-      <input type="reset" class="btn btn-primary" href="Principal.html" value="CANCELAR">
-      
     </div>
-    
-    
-  
-  </section> 
+    </section> 
+  </div>
   <!--Footer-->
   <footer class="dropdown-footer">
     <strong>Copyright &copy; 2022 <a href="">JARED LUIZAGA</a>.</strong> All rights reserved.
