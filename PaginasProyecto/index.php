@@ -13,6 +13,23 @@
   <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <script>
+    function ingresar()
+    {
+      $(document).ready(function()
+      {
+      var usuario=$('#usuario').val();
+      var passw=$('#passw').val();
+      alert(passw);
+      $.get("validacionLoguin.php",{usuario:usuario, passw:passw},function(result){
+        $("#mostrarmensaje").html(result);
+        $('#mostrarmensaje').show();
+      });
+    });
+  }
+  </script>
+
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -27,9 +44,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Ingrese sus datos para iniciar su sección</p>
 
-      <form action="Principal.html" method="post">
+      <form action="validacionLoguin.php" method="get">
         <div class="input-group mb-3">
-          <input type="usuario" name="usuarioInput" class="form-control" placeholder="Usuario">
+          <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-users"></span>
@@ -37,7 +54,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="passwordInput" class="form-control" placeholder="Password">
+          <input type="password" name="passw" id="passw" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -48,7 +65,7 @@
           <div class="col-4">
           </div>
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block float-sm-right" style="width:100% ;">Ingresar</button>
+            <button type="button" class="btn btn-primary btn-block float-sm-right" style="width:100% ;" onclick="ingresar();">Ingresar</button>
           </div> 
           <div class="col-4">
           </div> 
@@ -56,15 +73,16 @@
       </form>
 
       
-      <!-- /.social-auth-links -->
-
-      
-      
+      <!-- /.social-auth-links --> 
     </div>
     <!-- /.login-card-body -->
   </div>
-
+  <div id="mostrarmensaje">
+    
+  </div>
 </div>
+
+
 <!-- /.login-box -->
 
 <!-- jQuery -->
