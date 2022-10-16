@@ -7,15 +7,16 @@
         ?>
         
         <script>
-            window.location.href="http://localhost/ProyectoSistemadeVentasMiMarket/PaginasProyecto/principal.php";
-        </script>
+            window.location.href="http://localhost:9095/ProyectoMiMarket/PaginasProyecto/Principal.html";
+     </script>
+     <?php
     }
     else{
-        
+        ?>  
         <div class="error">
             El usuaro y/o la contraseña que ingreso es incorrecta, favor de revisar.
         </div>
-        <?php
         
+        <?php
     }
 ?>
