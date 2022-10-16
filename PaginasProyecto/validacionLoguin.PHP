@@ -13,7 +13,7 @@
     }
     else{
         ?>  
-        <div class="error">
+        <div class="alert alert-warning" role="alert">
             El usuaro y/o la contraseña que ingreso es incorrecta, favor de revisar.
         </div>
         

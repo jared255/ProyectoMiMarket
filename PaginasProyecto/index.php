@@ -20,7 +20,7 @@
       {
       var usuario=$('#usuario').val();
       var passw=$('#passw').val();
-      alert(passw);
+      
       $.get("validacionLoguin.php",{usuario:usuario, passw:passw},function(result){
         $("#mostrarmensaje").html(result);
         $('#mostrarmensaje').show();
