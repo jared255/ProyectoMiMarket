@@ -1,9 +1,18 @@
 <?php
+    include 'BasedeDatos/conexionbd.php';
     //conectar con consulta base de datos la sgte clase
+
+    //connectando con la BD especifica
+    conectarservidor();
+    $conexion=mysqli_connect($nombreservidor,$usuariobd,$passw,$dbnombre);
+   
     $usuario=$_GET['usuario'];
     $password=$_GET['passw'];
 
-    if(($usuario=='jared255')&&($password=='incos')){
+    //revisar los datos de la BD
+    $consul="SELECT usuario, password FROM usuario WHERE usuario='$usuario' AND password='$password'";
+    $resultado = mysqli_query($conexion,$consul); 
+    if((numfilas()>0)){
         ?>
         
         <script>

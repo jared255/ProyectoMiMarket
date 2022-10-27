@@ -2,10 +2,38 @@
     $nombreservidor="localhost";
     $usuariobd="root";
     $passw="";
+    $dbnombre="mimarket_db";
 
     $conex=mysqli_connect($nombreservidor,$usuariobd,$passw);
+    $conex;
+    $resultado;
 
-    if (!conex) {
-        echo "Error en la conexción".mysqli_connec_error();
+    function conectarservidor(){
+    global $nombreservidor,$usuariobd,$passw,$dbnombre;
+    $conex = mysqli_connect($nombreservidor,$usuariobd,$passw,$dbnombre);
+
+        if(!$conex){
+            echo "Error en la conexion". mysqli_connect_error();
+        }
+        else{
+            echo "Conexion Exitosa";
+        }
     }
+
+    function consulta($consul){
+        global $conex,$resultado;
+      
+        $resultado = mysqli_query($conex,$consul); 
+        if ($resultado) {
+             echo "Consulta exitosa";
+         } else {
+             echo "Error: " . $consul . "<br>" . mysqli_error($conex);
+         }
+     }
+ 
+     
+     function numfilas(){
+         global $resultado;
+         return mysqli_num_rows($resultado);
+     }
 ?>
