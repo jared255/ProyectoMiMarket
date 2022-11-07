@@ -8,6 +8,20 @@
     $conex;
     $resultado;
 
+    function conectarbd(){
+        $servidor = "localhost";
+        $usuariobd = "root";
+        $password = "";
+        $db = "mimarket_db";
+    
+        $conex = mysqli_connect($servidor,$usuariobd,$password,$db);
+    
+        if(!$conex){
+            die("Conexion fallida ".mysqli_connect_error());
+        }
+    }
+
+
     function conectarservidor(){
     global $nombreservidor,$usuariobd,$passw,$dbnombre;
     $conex = mysqli_connect($nombreservidor,$usuariobd,$passw,$dbnombre);

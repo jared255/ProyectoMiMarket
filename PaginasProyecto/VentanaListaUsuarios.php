@@ -1,3 +1,15 @@
+<?php
+include "BasedeDatos/conexionbd.php";
+conectarbd();
+
+$conex=mysqli_connect($nombreservidor,$usuariobd,$passw,$dbnombre);
+$sqllista = "SELECT idusuario,usuario,nombres,apellidos,direccion,telefonos,tipoUsuario
+FROM usuario";
+
+$consultaCli = mysqli_query($conex,$sqllista);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +65,10 @@
                 
               </div>
 
-            </a></div></div></div>
+            </a>
+          </div>
+        </div>
+      </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- Main content -->
@@ -83,94 +98,56 @@
           <div class="card card-info">
 
             <div class="card-body p-0">
-              <table class="table">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>Nombre</th>
-                    <th>Tipo de usuario</th>
-                    <th>Teléfono</th>
+                    <th>Usuario</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Dirección</th>
+                    <th>Teléfonos</th>
+                    <th>Tipo de Usuario</th>
                     <th class="text-center">Editar</th>
                     <th class="text-center">Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
-
-                  <tr>
-                    <td>Juan Perez</td>
-                    <td>Admin</td>
-                    <td>759*****</td>
-                    <td class="text-center py-0 align-middle">
-                      <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                      </div>
+                <?php
+                   //codigo PHP para generar datos de la tabla
+                   while($fila = mysqli_fetch_assoc($consultaCli)){
+                     echo "<tr>";
+                       $idusuario = $fila['idusuario'];
+                       echo "<td>".$fila['usuario']."</td>";
+                       echo "<td>".$fila['nombres']."</td>";
+                       echo "<td>".$fila['apellidos']."</td>";
+                       echo "<td>".$fila['direccion']."</td>";
+                       echo "<td>".$fila['telefonos']."</td>";
+                       echo "<td>".$fila['tipoUsuario']."</td>";
+                ?>
+                    <td>
+                      <div class="btn-group">
+                        <a href="#" class="btn btn-warning" data-toggle='modal' data-target='#actualizar'  onClick='actualizarCliente(<?php echo $idCliente;?>);'><i class="fas fa-pencil-alt"></i></a>
+                        <a href="#" class="btn btn-danger" data-toggle='modal' data-target='#eliminar' onClick='eliminarCliente(<?php echo $idCliente;?>)'><i class="fas fa-trash"></i></a>
+                     </div>
                     </td>
-                    <td class="text-center py-0 align-middle">
-                      <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </td>
+                 </tr>
+                <?php
+                }
 
-                    <tr>
-                      <td>Juan Perez</td>
-                      <td>User</td>
-                      <td>759*****</td>
-                      <td class="text-center py-0 align-middle">
-                        <div class="btn-group btn-group-sm">
-                          <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                        </div>
-                      </td>
-                      <td class="text-center py-0 align-middle">
-                        <div class="btn-group btn-group-sm">
-                          <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        </div>
-                      </td>
-
-                      <tr>
-                        <td>Juan Perez</td>
-                        <td>User</td>
-                        <td>759*****</td>
-                        <td class="text-center py-0 align-middle">
-                          <div class="btn-group btn-group-sm">
-                            <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                          </div>
-                        </td>
-                        <td class="text-center py-0 align-middle">
-                          <div class="btn-group btn-group-sm">
-                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                          </div>
-                        </td>
-
-                        <tr>
-                          <td>Juan Perez</td>
-                          <td>User</td>
-                          <td>759*****</td>
-                          <td class="text-center py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-                              <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                            </div>
-                          </td>
-                          <td class="text-center py-0 align-middle">
-                            <div class="btn-group btn-group-sm">
-                              <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                            </div>
-                          </td>
-
-                          <tr>
-                            <td>Juan Perez</td>
-                            <td>User</td>
-                            <td>759*****</td>
-                            <td class="text-center py-0 align-middle">
-                              <div class="btn-group btn-group-sm">
-                                <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                              </div>
-                            </td>
-                            <td class="text-center py-0 align-middle">
-                              <div class="btn-group btn-group-sm">
-                                <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                              </div>
-                            </td>
-
+                ?>
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Usuario</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Dirección</th>
+                    <th>Teléfonos</th>
+                    <th>Tipo de Usuario</th>
+                    <th class="text-center">Editar</th>
+                    <th class="text-center">Eliminar</th>
+                  </tr>
+                </tfoot>
               </table>
             </div>
             <!-- /.card-body -->

@@ -13,16 +13,34 @@
   <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <script>
+    function registrar()
+    {
+      $(document).ready(function()
+      {
+      var usuario=$('#usuario').val();
+      var nombre=$('#nombre').val();
+      var apellidos=$('#apellidos').val();
+      var password=$('#password').val();
+      var telefono=$('#telefono').val();
+      var confirmarPassword=$('#confirmarPassword').val();
+      var direccion=$('#direccion').val();
+      var tipoUsuario=$('#tipoUsuario').val();
+
+      
+      $.get("registrarUsuario.php",{usuario:usuario, nombre:nombre, apellidos:apellidos, password:password, telefono:telefono, confirmarPassword:confirmarPassword, direccion:direccion, tipoUsuario:tipoUsuario},function(result){
+        $("#mostrarmensaje").html(result);
+        $('#mostrarmensaje').show();
+      });
+    });
+  }
+  </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
-  <!-- Navbar -->
-  <!-- /.navbar -->
-  <!-- Main Sidebar Container -->
-  <!-- Content Wrapper. Contains page content -->
+
   <div class="content">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row">
@@ -54,16 +72,23 @@
                 
               </div>
 
-            </div><a href="index.html">            
-          </a></div><a href="index.html">
-        </a></div>
+            </div>
+          </div>
+        </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- Main content -->
   </div>
 
   <section class="content">
-    <form action="VentanaListaUsuarios.html" method="get">
+    <div class="row">
+      <div class="col-md-12">
+           <!-- DESPLEGAR MENSAJE DE REGISTRO -->
+          <div id="mostrarmensaje">
+          </div>
+      </div>
+     </div>
+    <form  method="get">
     <div class="card-body">
       <div class="row">
         <div class="col-md-10">
@@ -99,7 +124,7 @@
                       <!-- text input -->
                       <div class="form-group">
                         <label>CONTRASEÑA:</label>
-                        <input type="text" class="form-control" name="password" id="password" placeholder="Apellidos ...">
+                        <input type="text" class="form-control" name="password" id="password" placeholder="Contraseña ...">
                       </div>
                     </div>
                   </div>
@@ -115,7 +140,7 @@
                       <!-- text input -->
                       <div class="form-group">
                         <label>CONFIRMAR CONTRASEÑA:</label>
-                        <input type="text" class="form-control" name="confirmarPassword" id="confirmarPassword" placeholder="Contraseña ...">
+                        <input type="text" class="form-control" name="confirmarPassword" id="confirmarPassword" placeholder="Repetir Contraseña ...">
                       </div>
                     </div>
                   </div>
@@ -131,7 +156,7 @@
                     <div class="col-sm-6">
                       <!-- select -->
                       <div class="form-group">
-                        <label for="tipoUsuario">TIPO DE USUARIO:</label>
+                        <label for="">TIPO DE USUARIO:</label>
                         <select class="form-control" name="tipoUsuario" id="tipoUsuario">
                           <option value="seleccionar">Seleccionar</option>
                           <option value="administrador">Administrador</option>
@@ -148,25 +173,24 @@
             
           </fieldset>
         </div>
-
+        
         <div class="col-md-2 ">
           <br>
-          <input name="guardar" id="guardar" class="btn btn-primary" type="submit" value="GUARDAR" >
+          <button name="guardar" id="guardar" class="btn btn-primary" type="button" value="" onclick="registrar();">GUARDAR</button>
           <br>
           <br>
-          <input name="limpiar" id="limpiar" class="btn btn-primary" type="reset" value="LIMPIAR">
+          <button name="limpiar" id="limpiar" class="btn btn-primary" type="reset" value="">LIMPIAR</button>
           <br>
           <br>
-           <input type="reset" class="btn btn-primary" href="Principal.html" value="CANCELAR">
+           <button type="reset" class="btn btn-primary" href="Principal.html" value="">CANCELAR</button>
         </div>
-      </div>
-      
-      
+      </div>      
     </div>
+   
     
-    
-  
   </section> 
+  
+  
   <!--Footer-->
   <footer class="dropdown-footer">
     <strong>Copyright &copy; 2022 <a href="">JARED LUIZAGA</a>.</strong> All rights reserved.
