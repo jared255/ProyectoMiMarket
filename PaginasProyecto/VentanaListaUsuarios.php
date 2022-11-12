@@ -98,7 +98,7 @@ $consultaCli = mysqli_query($conex,$sqllista);
           <div class="card card-info">
 
             <div class="card-body p-0">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="tabla1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Usuario</th>
@@ -127,6 +127,11 @@ $consultaCli = mysqli_query($conex,$sqllista);
                     <td>
                       <div class="btn-group">
                         <a href="#" class="btn btn-warning" data-toggle='modal' data-target='#actualizar'  onClick='actualizarCliente(<?php echo $idCliente;?>);'><i class="fas fa-pencil-alt"></i></a>
+                        
+                     </div>
+                    </td>
+                    <td>
+                      <div class="btn-group">
                         <a href="#" class="btn btn-danger" data-toggle='modal' data-target='#eliminar' onClick='eliminarCliente(<?php echo $idCliente;?>)'><i class="fas fa-trash"></i></a>
                      </div>
                     </td>
@@ -185,6 +190,82 @@ $consultaCli = mysqli_query($conex,$sqllista);
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
+
+<script>
+  $(function () {
+    $("#tabla1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#tabla1_wrapper .col-md-6:eq(0)');
+    $('#tabla2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+<!-- Page specific script -->
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
+
+<!-- Modal de actualizacion-->
+<div class="modal fade" id="actualizar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Actualizar Datos Cliente</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div id="contenidoActualizar">
+      <div class="modal-body">
+        Cliente a cargar
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Actualizar</button>
+      </div>
+      </div><!--fin campos actualizar-->
+    </div>
+  </div>
+</div>
+
+
+
+<!--modal para eliminar-->
+
+<!-- Modal -->
+<div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Eliminar Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div id="contenidoActualizarEliminar">
+      <div class="modal-body">
+        Esta seguro de eliminar este registro?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Eliminar</button>
+      </div>
+      </div><!--fin de contenidoActualizarEliminar-->
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>
