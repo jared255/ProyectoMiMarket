@@ -4,9 +4,11 @@
     $passw="";
     $dbnombre="mimarket_db";
 
-    $conex=mysqli_connect($nombreservidor,$usuariobd,$passw);
     $conex;
     $resultado;
+    
+    $conex = mysqli_connect($servidor,$usuariobd,$password,$db);
+    
 
     function conectarbd(){
         $servidor = "localhost";

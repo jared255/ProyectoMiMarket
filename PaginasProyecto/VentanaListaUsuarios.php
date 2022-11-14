@@ -25,6 +25,32 @@ $consultaCli = mysqli_query($conex,$sqllista);
   <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <script>
+    function actualizarUsuario(idusuario){
+    let idusu = idusuario;
+
+    $.get("actualizarUsuario.php",{idusu:idusu},function(result){
+        $("#contenidoActualizar").html(result);
+        $("#contenidoActualizar").show();
+    });
+  }
+  function ejecutarActualizacion(idusuario){
+      let idusu = idusuario;
+      let usuario=$('#usuario').val();
+      let nombre=$('#nombre').val();
+      let apellidos=$('#apellidos').val();
+      let password=$('#password').val();
+      let telefono=$('#telefono').val();
+      let confirmarPassword=$('#confirmarPassword').val();
+      let direccion=$('#direccion').val();
+      let tipoUsuario=$('#tipoUsuario').val();
+
+    $.get("ejecutarActualizacion.php",{idusu:idusu,usuario:usuario, nombre:nombre, apellidos:apellidos, password:password, telefono:telefono, confirmarPassword:confirmarPassword, direccion:direccion, tipoUsuario:tipoUsuario},function(result){
+        $("#actualizarTabla").html(result);
+        $("#actualizarTabla").show();
+    });
+  }
+  </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
@@ -96,66 +122,67 @@ $consultaCli = mysqli_query($conex,$sqllista);
           </div>
           
           <div class="card card-info">
+            <div id="actualizarTabla">
+                <div class="card-body p-0">
+                  <table id="tabla1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Usuario</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Dirección</th>
+                        <th>Teléfonos</th>
+                        <th>Tipo de Usuario</th>
+                        <th class="text-center">Editar</th>
+                        <th class="text-center">Eliminar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                      //codigo PHP para generar datos de la tabla
+                      while($fila = mysqli_fetch_assoc($consultaCli)){
+                        echo "<tr>";
+                          $idusuario = $fila['idusuario'];
+                          echo "<td>".$fila['usuario']."</td>";
+                          echo "<td>".$fila['nombres']."</td>";
+                          echo "<td>".$fila['apellidos']."</td>";
+                          echo "<td>".$fila['direccion']."</td>";
+                          echo "<td>".$fila['telefonos']."</td>";
+                          echo "<td>".$fila['tipoUsuario']."</td>";
+                    ?>
+                        <td>
+                          <div class="btn-group">
+                            <a href="#" class="btn btn-warning" data-toggle='modal' data-target='#actualizar'  onClick='actualizarUsuario(<?php echo $idusuario;?>);'><i class="fas fa-pencil-alt"></i>Editar</a>
+                            
+                        </div>
+                        </td>
+                        <td>
+                          <div class="btn-group">
+                            <a href="#" class="btn btn-danger" data-toggle='modal' data-target='#eliminar' onClick='eliminarCliente(<?php echo $idusuario;?>)'><i class="fas fa-trash"></i></a>
+                        </div>
+                        </td>
+                    </tr>
+                    <?php
+                    }
 
-            <div class="card-body p-0">
-              <table id="tabla1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>Usuario</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Dirección</th>
-                    <th>Teléfonos</th>
-                    <th>Tipo de Usuario</th>
-                    <th class="text-center">Editar</th>
-                    <th class="text-center">Eliminar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <?php
-                   //codigo PHP para generar datos de la tabla
-                   while($fila = mysqli_fetch_assoc($consultaCli)){
-                     echo "<tr>";
-                       $idusuario = $fila['idusuario'];
-                       echo "<td>".$fila['usuario']."</td>";
-                       echo "<td>".$fila['nombres']."</td>";
-                       echo "<td>".$fila['apellidos']."</td>";
-                       echo "<td>".$fila['direccion']."</td>";
-                       echo "<td>".$fila['telefonos']."</td>";
-                       echo "<td>".$fila['tipoUsuario']."</td>";
-                ?>
-                    <td>
-                      <div class="btn-group">
-                        <a href="#" class="btn btn-warning" data-toggle='modal' data-target='#actualizar'  onClick='actualizarCliente(<?php echo $idCliente;?>);'><i class="fas fa-pencil-alt"></i></a>
-                        
-                     </div>
-                    </td>
-                    <td>
-                      <div class="btn-group">
-                        <a href="#" class="btn btn-danger" data-toggle='modal' data-target='#eliminar' onClick='eliminarCliente(<?php echo $idCliente;?>)'><i class="fas fa-trash"></i></a>
-                     </div>
-                    </td>
-                 </tr>
-                <?php
-                }
-
-                ?>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>Usuario</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Dirección</th>
-                    <th>Teléfonos</th>
-                    <th>Tipo de Usuario</th>
-                    <th class="text-center">Editar</th>
-                    <th class="text-center">Eliminar</th>
-                  </tr>
-                </tfoot>
-              </table>
+                    ?>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>Usuario</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Dirección</th>
+                        <th>Teléfonos</th>
+                        <th>Tipo de Usuario</th>
+                        <th class="text-center">Editar</th>
+                        <th class="text-center">Eliminar</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
