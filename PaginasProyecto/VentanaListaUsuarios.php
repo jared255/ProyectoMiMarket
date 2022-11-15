@@ -1,8 +1,8 @@
 <?php
 include "BasedeDatos/conexionbd.php";
-conectarbd();
+//conectarbd();
 
-$conex=mysqli_connect($nombreservidor,$usuariobd,$passw,$dbnombre);
+$conex=mysqli_connect($nombreservidor,$usuariobd,$password,$db);
 $sqllista = "SELECT idusuario,usuario,nombres,apellidos,direccion,telefonos,tipoUsuario
 FROM usuario";
 
@@ -34,6 +34,8 @@ $consultaCli = mysqli_query($conex,$sqllista);
         $("#contenidoActualizar").show();
     });
   }
+  </script>
+  <script>
   function ejecutarActualizacion(idusuario){
       let idusu = idusuario;
       let usuario=$('#usuario').val();
@@ -41,16 +43,36 @@ $consultaCli = mysqli_query($conex,$sqllista);
       let apellidos=$('#apellidos').val();
       let password=$('#password').val();
       let telefono=$('#telefono').val();
-      let confirmarPassword=$('#confirmarPassword').val();
       let direccion=$('#direccion').val();
       let tipoUsuario=$('#tipoUsuario').val();
 
-    $.get("ejecutarActualizacion.php",{idusu:idusu,usuario:usuario, nombre:nombre, apellidos:apellidos, password:password, telefono:telefono, confirmarPassword:confirmarPassword, direccion:direccion, tipoUsuario:tipoUsuario},function(result){
+    $.get("ejecutarActualizacion.php",{idusu:idusu,usuario:usuario, nombre:nombre, apellidos:apellidos, password:password, telefono:telefono, direccion:direccion, tipoUsuario:tipoUsuario},function(result){
         $("#actualizarTabla").html(result);
         $("#actualizarTabla").show();
     });
   }
-  </script>
+</script>
+<!-- ELIMINAR -->
+<Script>
+  function eliminarCliente(idusuario){
+    let idusu = idusuario;
+
+    $.get("eliminarCliente.php",{idusu:idusu},function(result){
+        $("#contenidoActualizarEliminar").html(result);
+        $("#contenidoActualizarEliminar").show();
+    });
+  }
+</Script>
+<Script>
+  function ejecutarEliminar(idusuario){
+    let idusu = idusuario;
+    $.get("ejecutarEliminarCliente.php",{idusu:idusu},function(result){
+        $("#actualizarTabla").html(result);
+        $("#actualizarTabla").show();
+    });
+  }
+</Script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
@@ -86,7 +108,7 @@ $consultaCli = mysqli_query($conex,$sqllista);
                   <li class="breadcrumb-item "><a href="VentanaInventario.html">INVENTARIO</a></li>
                   <li class="breadcrumb-item "><a href="VentanaReportes.html">REPORTES</a></li>
                   <li class="breadcrumb-item "><a href="Registro.html">REGISTRO</a></li>
-                  <li class="breadcrumb-item "><a href="index.html">SALIR</a></li></ol></div><a href="index.html">
+                  <li class="breadcrumb-item "><a href="index.html">SALIR</a></li></ol></div><a href="index.php">
               <div class="col-sm-min">
                 
               </div>
@@ -286,7 +308,7 @@ $(function () {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Eliminar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" >Eliminar</button>
       </div>
       </div><!--fin de contenidoActualizarEliminar-->
     </div>

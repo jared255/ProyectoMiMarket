@@ -2,7 +2,7 @@
     include 'BasedeDatos/conexionbd.php';
 
     
-    $conexion=mysqli_connect($nombreservidor,$usuariobd,$passw,$dbnombre);
+    $conexion=mysqli_connect($nombreservidor,$usuariobd,$password,$db);
 
     $usuario=$_GET['usuario'];
     $nombre=$_GET['nombre'];

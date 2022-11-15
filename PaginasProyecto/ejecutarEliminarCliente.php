@@ -2,24 +2,16 @@
     include "BasedeDatos/conexionbd.php";
     conectarbd();
 
-    //recepcionando los datos para actualizar
+    //recepcionando los datos para ELIMINAR
      $idUsuario = $_GET['idusu'];
-      $usuario=$_GET['usuario'];
-      $password=$_GET['password'];
-      $nombre=$_GET['nombre'];
-      $apellidos=$_GET['apellidos'];
-      $direccion=$_GET['direccion'];
-      $telefono=$_GET['telefono'];
-      $tipoUsuario=$_GET['tipoUsuario'];
+      
 
 
-    //actualizar
-    $sqlactualizar = "UPDATE usuario SET usuario='$usuario', password ='$password',
-    nombres='$nombre',apellidos='$apellidos',direccion='$direccion',
-    telefonos='$telefono', tipoUsuario='$tipoUsuario'  
+    //ELIMINAR
+    $sqleliminar = "DELETE FROM usuario   
     WHERE idUsuario='$idUsuario'";
 
-    $ejecutarActualizacion = mysqli_query($conex, $sqlactualizar);
+    $ejecutarEliminar = mysqli_query($conex, $sqleliminar);
 
     //mostrar los datos actualizados
     //recuperar los datos para mostrarlos en la lista
@@ -59,13 +51,13 @@
         ?>
             <td>
                 <div class="btn-group">
-                <a href="#" class="btn btn-warning" data-toggle='modal' data-target='#actualizar'  onClick="actualizarUsuario(<?php echo $idusuario;?>);"><i class="fas fa-pencil-alt"></i>Editar</a>
+                <a href="#" class="btn btn-warning" data-toggle='modal' data-target='#actualizar'  onClick='actualizarUsuario(<?php echo $idusuario;?>);'><i class="fas fa-pencil-alt"></i>Editar</a>
                 
             </div>
             </td>
             <td>
                 <div class="btn-group">
-                <a href="#" class="btn btn-danger" data-toggle='modal' data-target='#eliminar' onClick="eliminarCliente(<?php echo $idusuario;?>)"><i class="fas fa-trash"></i></a>
+                <a href="#" class="btn btn-danger" data-toggle='modal' data-target='#eliminar' onClick='ejecutarEliminar(<?php echo $idusuario;?>)'><i class="fas fa-trash"></i></a>
             </div>
             </td>
         </tr>
