@@ -4,7 +4,7 @@
 
     //connectando con la BD especifica
     conectarservidor();
-    $conexion=mysqli_connect($nombreservidor,$usuariobd,$passw,$dbnombre);
+    $conexion=mysqli_connect($nombreservidor,$usuariobd,$passw,$db);
    
     $usuario=$_GET['usuario'];
     $password=$_GET['passw'];
